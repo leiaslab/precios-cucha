@@ -109,6 +109,6 @@
     width:38px;height:38px;border-radius:50%;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center}
   #overlayCfg{position:fixed;inset:0;background:rgba(15,30,25,.45);z-index:60;display:none;align-items:flex-end;justify-content:center}
   #overlayCfg.show{display:flex}
-  #catBar{padding:14px 16px 2px}
+  #catBar{margin-top:12px}
   #catSelect{width:100%;padding:12px;border-radius:12px;border:1.5px solid var(--line);
     background:#fff;color:var(--ink);font-size:15px;font-weight:600;cursor:pointer}
