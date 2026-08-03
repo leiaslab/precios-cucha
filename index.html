@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Precios Cucha</title>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#0E4F47">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Precios Cucha">
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header>
+  <button id="gear" class="gear">⚙</button>
+  <div class="eyebrow"><span>🐾</span><span>Lista de precios</span></div>
+  <h1 id="localNombre">Local 2 <span style="font-size:14px;opacity:.6">✎</span></h1>
+  <input id="localInput" type="text">
+  <div class="search"><span>🔍</span><input id="busqueda" placeholder="Buscar por nombre o categoría…"></div>
+</header>
+
+<div id="catBar"><select id="catSelect"></select></div>
+<main id="lista"></main>
+
+<button id="fab">+ Agregar producto</button>
+
+<div id="overlay">
+  <div class="sheet">
+    <div class="handle"></div>
+    <h2 id="modalTitulo">Nuevo producto</h2>
+
+    <label>Fotos (hasta 5)</label>
+    <div id="fFotos" class="fotos-grid"></div>
+    <input type="file" id="fImgInput" accept="image/*" multiple style="display:none">
+
+    <label>Nombre</label>
+    <input id="fNombre" class="inp" placeholder="Ej: Alimento perro adulto 15kg">
+    <label>Descripción (opcional)</label>
+    <textarea id="fDesc" class="inp" rows="2" maxlength="100" placeholder="Ej: Sabor cordero, ideal razas grandes. Bolsa reforzada." style="resize:none;margin-bottom:4px"></textarea>
+    <div id="descCount" style="font-size:11px;color:var(--muted);text-align:right;margin-bottom:16px">0/100</div>
+    <label>Categoría</label>
+    <div class="opts" id="fCats"></div>
+    <button class="newcat-btn" id="btnNuevaCat">+ Nueva categoría</button>
+    <div id="nuevaCatPanel">
+      <label>Nombre de la categoría</label>
+      <input id="ncNombre" class="inp" placeholder="Ej: Piedras sanitarias">
+      <label>Color</label>
+      <div id="ncColores"></div>
+      <div style="display:flex;gap:8px">
+        <button class="mini" id="ncAgregar" style="background:var(--primary);color:#fff">Agregar categoría</button>
+        <button class="mini" id="ncCancel" style="background:#fff;border:1.5px solid var(--line);color:var(--muted)">Cerrar</button>
+      </div>
+      <div id="ncLista"></div>
+    </div>
+    <label>Se vende por</label>
+    <div class="opts2" id="fUnidad">
+      <div class="opt2 on" data-u="unidad">Unidad</div>
+      <div class="opt2" data-u="kg">Kilo (kg)</div>
+    </div>
+    <label>Precio (ARS)</label>
+    <input id="fPrecio" class="inp" type="number" inputmode="decimal" placeholder="0">
+    <div class="footer">
+      <button class="btn-cancel" id="btnCancel">Cancelar</button>
+      <button class="btn-save" id="btnSave">Guardar</button>
+    </div>
+  </div>
+</div>
+
+<div id="lightbox">
+  <button id="lbPrev" class="lb-nav">‹</button>
+  <img id="lightboxImg" alt="">
+  <button id="lbNext" class="lb-nav">›</button>
+  <div id="lbDots"></div>
+</div>
+
+<div id="overlayCfg">
+  <div class="sheet">
+    <div class="handle"></div>
+    <h2>Copia de seguridad</h2>
+    <p style="font-size:14px;color:var(--muted);margin:0 0 18px;line-height:1.4">Exportá tu lista completa (productos y fotos) para pasarla a otro celu. En el otro, tocá Importar y elegí el archivo.</p>
+    <button id="btnExport" class="btn-save" style="width:100%;margin-bottom:10px">⬇️ Exportar copia</button>
+    <button id="btnImport" class="btn-cancel" style="width:100%;margin-bottom:18px">⬆️ Importar copia</button>
+    <input type="file" id="importInput" accept="application/json,.json" style="display:none">
+    <button id="cfgCerrar" class="btn-cancel" style="width:100%">Cerrar</button>
+  </div>
+</div>
+<script src="app-1.js"></script>
+<script src="app-1b.js"></script>
+<script src="app-2.js"></script>
+</body>
+</html>
