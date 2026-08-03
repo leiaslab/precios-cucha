@@ -1,4 +1,4 @@
-const CACHE = 'precios-cucha-v1';
+const CACHE = 'precios-cucha-v2';
 const ASSETS = ['./','./index.html','./app.css','./app-1.js','./app-1b.js','./app-2.js','./manifest.webmanifest','./icon-192.png','./apple-touch-icon.png'];
 
 self.addEventListener('install', e => {
@@ -13,31 +13,20 @@ self.addEventListener('activate', e => {
   );
 });
 
+// Red primero (siempre lo último con internet); si no hay conexión, usa la copia guardada.
 self.addEventListener('fetch', e => {
   const req = e.request;
   if (req.method !== 'GET') return;
-  let url;
-  try { url = new URL(req.url); } catch(_) { return; }
-  const isNav = req.mode === 'navigate' || (req.headers.get('accept')||'').includes('text/html');
-  if (isNav) {
-    // Página: red primero (para recibir actualizaciones), con respaldo offline
-    e.respondWith(
-      fetch(req).then(res => {
-        const copy = res.clone();
-        caches.open(CACHE).then(c => c.put(req, copy));
-        return res;
-      }).catch(() => caches.match(req).then(r => r || caches.match('./index.html')))
-    );
-    return;
-  }
-  // Recursos: caché primero (rápido y offline)
   e.respondWith(
-    caches.match(req).then(cached => cached || fetch(req).then(res => {
-      if (url.origin === location.origin) {
-        const copy = res.clone();
-        caches.open(CACHE).then(c => c.put(req, copy));
-      }
+    fetch(req).then(res => {
+      try {
+        const url = new URL(req.url);
+        if (url.origin === location.origin) {
+          const copy = res.clone();
+          caches.open(CACHE).then(c => c.put(req, copy));
+        }
+      } catch (_) {}
       return res;
-    }).catch(() => cached))
+    }).catch(() => caches.match(req).then(r => r || (req.mode === 'navigate' ? caches.match('./index.html') : undefined)))
   );
 });
