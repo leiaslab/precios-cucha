@@ -1,5 +1,5 @@
 // ---- Eventos ----
-document.getElementById('fab').onclick=()=>abrirModal(null);
+document.getElementById('addBtn').onclick=()=>abrirModal(null);
 document.getElementById('btnCancel').onclick=cerrarModal;
 document.getElementById('btnSave').onclick=guardarModal;
 document.getElementById('overlay').onclick=e=>{if(e.target.id==='overlay')cerrarModal();};

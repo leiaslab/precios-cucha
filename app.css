@@ -4,7 +4,7 @@
   }
   *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
   body{margin:0;background:var(--bg);color:var(--ink);
-    font-family:'Segoe UI',system-ui,-apple-system,sans-serif;padding-bottom:120px}
+    font-family:'Segoe UI',system-ui,-apple-system,sans-serif;padding-bottom:32px}
   input,button,textarea{font-family:inherit}
   header{background:var(--primary);color:#fff;padding:18px 16px 20px;position:sticky;top:0;z-index:20}
   .eyebrow{display:flex;align-items:center;gap:8px;margin-bottom:4px;font-size:12px;
@@ -105,8 +105,10 @@
   #lbDots{position:absolute;bottom:24px;left:0;right:0;display:flex;gap:7px;justify-content:center}
   #lbDots .d{width:8px;height:8px;border-radius:4px;background:rgba(255,255,255,.4)}
   #lbDots .d.on{background:#fff}
-  .gear{position:absolute;top:14px;right:14px;background:rgba(255,255,255,.15);border:none;color:#fff;
+  .header-actions{position:absolute;top:14px;right:14px;display:flex;gap:8px;z-index:2}
+  .gear{background:rgba(255,255,255,.15);border:none;color:#fff;
     width:38px;height:38px;border-radius:50%;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+  #addBtn{font-size:26px;font-weight:600;line-height:1}
   #overlayCfg{position:fixed;inset:0;background:rgba(15,30,25,.45);z-index:60;display:none;align-items:flex-end;justify-content:center}
   #overlayCfg.show{display:flex}
   #catBar{margin-top:12px}

@@ -16,7 +16,10 @@
 </head>
 <body>
 <header>
-  <button id="gear" class="gear">⚙</button>
+  <div class="header-actions">
+    <button id="addBtn" class="gear" aria-label="Agregar producto">+</button>
+    <button id="gear" class="gear" aria-label="Copia de seguridad">⚙</button>
+  </div>
   <div class="eyebrow"><span>🐾</span><span>Lista de precios</span></div>
   <h1 id="localNombre">Local 2 <span style="font-size:14px;opacity:.6">✎</span></h1>
   <input id="localInput" type="text">
@@ -25,7 +28,6 @@
 </header>
 <main id="lista"></main>
 
-<button id="fab">+ Agregar producto</button>
 
 <div id="overlay">
   <div class="sheet">
